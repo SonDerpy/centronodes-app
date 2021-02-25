@@ -1,0 +1,119 @@
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>CentroNodes</title>
+      <script>window.$ = window.jQuery = require('jquery');</script>
+      <link rel="stylesheet" href="src/css/style.css">
+      <link rel="stylesheet" href="src/css/titleBar.css">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <script src="src/js/titleBar.js"></script>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+   </head>
+   <body>
+      <div class="loader-container">
+         <div class="loader"></div>
+      </div>
+      <div class="container">
+         <div class="titleBar titleBarStyle">
+            <div class="windowTitle draggable"> CENTRONODES </div>
+            <div class="windowControls windowControlsStyle">
+               <button id="minimize">
+               <img class="icon" srcset="./src/img/icons/titlebar/min-w-10.png 1x, ./src/img/icons/titlebar/min-w-12.png 1.25x, ./src/img/icons/titlebar/min-w-15.png 1.5x, ./src/img/icons/titlebar/min-w-15.png 1.75x, ./src/img/icons/titlebar/min-w-20.png 2x, ./src/img/icons/titlebar/min-w-20.png 2.25x, ./src/img/icons/titlebar/min-w-24.png 2.5x, ./src/img/icons/titlebar/min-w-30.png 3x, ./src/img/icons/titlebar/min-w-30.png 3.5x" draggable="false" />
+               </button>
+               <button id="maximize">
+               <img class="icon" srcset="./src/img/icons/titlebar/max-w-10.png 1x, ./src/img/icons/titlebar/max-w-12.png 1.25x, ./src/img/icons/titlebar/max-w-15.png 1.5x, ./src/img/icons/titlebar/max-w-15.png 1.75x, ./src/img/icons/titlebar/max-w-20.png 2x, ./src/img/icons/titlebar/max-w-20.png 2.25x, ./src/img/icons/titlebar/max-w-24.png 2.5x, ./src/img/icons/titlebar/max-w-30.png 3x, ./src/img/icons/titlebar/max-w-30.png 3.5x" draggable="false" />
+               </button>
+               <button id="quit">
+               <img class="icon" srcset="./src/img/icons/titlebar/close-w-10.png 1x, ./src/img/icons/titlebar/close-w-12.png 1.25x, ./src/img/icons/titlebar/close-w-15.png 1.5x, ./src/img/icons/titlebar/close-w-15.png 1.75x, ./src/img/icons/titlebar/close-w-20.png 2x, ./src/img/icons/titlebar/close-w-20.png 2.25x, ./src/img/icons/titlebar/close-w-24.png 2.5x, ./src/img/icons/titlebar/close-w-30.png 3x, ./src/img/icons/titlebar/close-w-30.png 3.5x" draggable="false" />
+               </button>
+            </div>
+            <!--
+               -->
+         </div>
+         <!-- 
+            <webview src="https://panel.centronodes.com" ></webview>
+            
+            
+            -->
+         <div class="sidenav">
+            <a id="client_trigger">Client</a>
+            <a id="panel_trigger">Panel</a>
+            <a id="main_trigger">Main</a>
+            <a id="status_trigger">Status</a>
+         </div>
+         <webview id="panel" style="
+            position: fixed;
+            bottom: 0px;
+            left:200px;
+            width: 1700px;
+            height: calc(100% - 33px);
+            z-index: 1;
+            "src="https://panel.centronodes.com"></webview>
+         <webview id="status" style="
+            position: fixed;
+            bottom: 0px;
+            left:200px;
+            width: 1700px;
+            height: calc(100% - 33px);
+            z-index: 1;
+            "src="https://status.centronodes.com"></webview>
+         <webview src="https://centronodes.com" id="main" style="
+            position: fixed;
+            bottom: 0px;
+            left:200px;
+            width: 1700px;
+            height: calc(100% - 33px);
+            z-index: 1;
+            "></webview>
+         <webview id="client" style="
+            position: fixed;
+            bottom: 0px;
+            left:200px;
+            width: 1700px;
+            height: calc(100% - 33px);
+            z-index: 1;
+            "src="https://client.centronodes.com"></webview>
+      </div>
+      <script>
+         $(window).on("load",function(){
+             $(".loader-container").fadeOut(3000);
+         });
+      </script>
+      <script>
+         $(window).on("load", function() {
+             $("#client").hide();
+             $("#panel").hide();
+             $("#status").hide();
+             $("#main").hide();
+           $('#client_trigger').click(function() {
+             $("#client").show();
+             $("#panel").hide();
+             $("#status").hide();
+             $("#main").hide();
+           });
+         
+           $('#panel_trigger').click(function() {
+             $("#client").hide();
+             $("#panel").show();
+             $("#status").hide();
+             $("#main").hide();
+           });
+           $('#main_trigger').click(function() {
+             $("#client").hide();
+             $("#panel").hide();
+             $("#status").hide();
+             $("#main").show();
+           });
+         
+           $('#status_trigger').click(function() {
+             $("#client").hide();
+             $("#panel").hide();
+             $("#status").show();
+             $("#main").hide();
+           });
+         });
+      </script>
+   </body>
+</html>

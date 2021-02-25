@@ -1,0 +1,53 @@
+{
+  "name": "centronodes-app",
+  "version": "1.0.0",
+  "description": "A CentroNodes Official Desktop app, you will be able to view the panel, the client area, main page and even our status page!",
+  "main": "main.js",
+  "dependencies": {
+    "electron-log": "^4.3.2",
+    "jquery": "^3.5.1",
+    "jquery-bez": "^1.0.11",
+    "v8-compile-cache": "^2.2.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^20.28.4"
+  },
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "build-installer": "electron-builder"
+  },
+  "build": {
+    "appId": "centronodes-app",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "src/images/centronodes-normal.ico",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis": {
+      "installerIcon": "src/images/centronodes-normal.ico",
+      "uninstallerIcon": "src/images/centronodes-normal.ico",
+      "uninstallDisplayName": "CentroNodes APP",
+      "license": "LICENSE.md",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SonDerpy/centronodes-app.git"
+  },
+  "keywords": [
+    "desktopapp"
+  ],
+  "author": "Withdrawal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SonDerpy/centronodes-app/issues"
+  },
+  "homepage": "https://github.com/SonDerpy/centronodes-app#readme"
+}
