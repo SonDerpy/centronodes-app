@@ -1,26 +1,19 @@
 {
-  "name": "centronodes-app",
+  "name": "centronodes",
+  "productName": "CentroNodes",
   "version": "1.0.0",
-  "description": "A CentroNodes Official Desktop app, you will be able to view the panel, the client area, main page and even our status page!",
+  "description": "A Desktop app for CentroNodes!",
   "main": "main.js",
-  "dependencies": {
-    "electron-log": "^4.3.2",
-    "jquery": "^3.5.1",
-    "jquery-bez": "^1.0.11",
-    "v8-compile-cache": "^2.2.0"
-  },
-  "devDependencies": {
-    "electron-builder": "^20.28.4"
-  },
   "scripts": {
-    "start": "electron .",
+    "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\"",
     "build-installer": "electron-builder"
   },
   "build": {
-    "appId": "centronodes-app",
+    "appId": "centronodes",
     "win": {
       "target": [
         "nsis"
@@ -31,23 +24,62 @@
     "nsis": {
       "installerIcon": "src/images/centronodes-normal.ico",
       "uninstallerIcon": "src/images/centronodes-normal.ico",
-      "uninstallDisplayName": "CentroNodes APP",
+      "uninstallDisplayName": "CentroNodes",
       "license": "LICENSE.md",
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SonDerpy/centronodes-app.git"
-  },
-  "keywords": [
-    "desktopapp"
-  ],
+  "keywords": [],
   "author": "Withdrawal",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/SonDerpy/centronodes-app/issues"
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "electronPackagerConfig": {
+        "asar": true
+      },
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ]
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "centronodes"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   },
-  "homepage": "https://github.com/SonDerpy/centronodes-app#readme"
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "jquery": "^3.5.1",
+    "os-utils": "0.0.14"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.51",
+    "@electron-forge/maker-deb": "^6.0.0-beta.51",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.51",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.51",
+    "@electron-forge/maker-zip": "^6.0.0-beta.51",
+    "electron": "9.0.0",
+    "electron-builder": "^22.6.1"
+  }
 }
